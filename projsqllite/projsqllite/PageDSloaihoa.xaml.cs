@@ -9,17 +9,17 @@ using Xamarin.Forms.Xaml;
 
 namespace projsqllite
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class PageDSloaihoa : ContentPage
-	{
-    database db;
-    List<Loaihoa> dsl;
-		public PageDSloaihoa ()
-		{
-			InitializeComponent ();
-      db = new database();
-      dsl = db.selectLoaihoa();
-      lstdsloai.ItemsSource = dsl;
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class PageDSloaihoa : ContentPage
+    {
+        database db;
+        List<Loaihoa> dsl;
+        public PageDSloaihoa()
+        {
+            InitializeComponent();
+            db = new database();
+            dsl = db.selectLoaihoa();
+            lstdsloai.ItemsSource = dsl;
+        }
     }
-	}
 }

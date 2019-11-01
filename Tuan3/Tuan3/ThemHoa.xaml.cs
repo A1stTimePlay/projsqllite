@@ -14,7 +14,15 @@ namespace Tuan3
     {
         public ThemHoa()
         {
+            Database db = new Database();
+            List<LoaiHoa> list = db.selectLoaihoa();
+            List<string> pickerData = new List<string>();
+            foreach (LoaiHoa loaiHoa in list)
+            {
+                pickerData.Add(loaiHoa.TenLoai);
+            }
             InitializeComponent();
+            pcMaLoai.ItemsSource = pickerData;
         }
     }
 }

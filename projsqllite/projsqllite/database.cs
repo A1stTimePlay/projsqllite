@@ -6,98 +6,98 @@ using System.Text;
 
 namespace projsqllite
 {
-  public class database
-  {
-    //lấy thư mục lưu trữ csdl trên hệ thống
-    string folder = System.Environment.GetFolderPath
-        (System.Environment.SpecialFolder.Personal);
-    public bool createDatabase()
+    public class database
     {
-      try
-      {
-        //tạo csdl
-        using (var connection = new
-         SQLiteConnection(System.IO.Path.Combine(folder, "qlhoa.db")))
+        //lấy thư mục lưu trữ csdl trên hệ thống
+        string folder = System.Environment.GetFolderPath
+            (System.Environment.SpecialFolder.Personal);
+        public bool createDatabase()
         {
-          //tạo 2 bang
-          connection.CreateTable<Loaihoa>();
-          connection.CreateTable<Hoa>();
-          return true;
+            try
+            {
+                //tạo csdl
+                using (var connection = new
+                 SQLiteConnection(System.IO.Path.Combine(folder, "qlhoa.db")))
+                {
+                    //tạo 2 bang
+                    connection.CreateTable<Loaihoa>();
+                    connection.CreateTable<Hoa>();
+                    return true;
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                //Log.Info("SQLiteEx", ex.Message);
+                return false;
+            }
         }
-      }
-      catch (SQLiteException ex)
-      {
-        //Log.Info("SQLiteEx", ex.Message);
-        return false;
-      }
-    }
-    public bool InsertLoaihoa(Loaihoa loai)
-    {
-      try
-      {
-        using (var connection = new
-            SQLiteConnection(System.IO.Path.Combine(folder, "qlhoa.db")))
+        public bool InsertLoaihoa(Loaihoa loai)
         {
-          connection.Insert(loai);
-          return true;
+            try
+            {
+                using (var connection = new
+                    SQLiteConnection(System.IO.Path.Combine(folder, "qlhoa.db")))
+                {
+                    connection.Insert(loai);
+                    return true;
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                //   Log.Info("SQLiteEx", ex.Message);
+                return false;
+            }
         }
-      }
-      catch (SQLiteException ex)
-      {
-        //   Log.Info("SQLiteEx", ex.Message);
-        return false;
-      }
-    }
-    public List<Loaihoa> selectLoaihoa()
-    {
-      try
-      {
-        using (var connection = new SQLiteConnection
-            (System.IO.Path.Combine(folder, "qlhoa.db")))
+        public List<Loaihoa> selectLoaihoa()
         {
-          return connection.Table<Loaihoa>().ToList();
+            try
+            {
+                using (var connection = new SQLiteConnection
+                    (System.IO.Path.Combine(folder, "qlhoa.db")))
+                {
+                    return connection.Table<Loaihoa>().ToList();
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                //Log.Info("SQLiteEx", ex.Message);
+                return null;
+            }
         }
-      }
-      catch (SQLiteException ex)
-      {
-        //Log.Info("SQLiteEx", ex.Message);
-        return null;
-      }
-    }
-    //Xử lý Thêm Hoa
-    public bool InsertHoa(Hoa h)
-    {
-      try
-      {
-        using (var connection = new
-            SQLiteConnection(System.IO.Path.Combine(folder, "qlhoa.db")))
+        //Xử lý Thêm Hoa
+        public bool InsertHoa(Hoa h)
         {
-          connection.Insert(h);
-          return true;
+            try
+            {
+                using (var connection = new
+                    SQLiteConnection(System.IO.Path.Combine(folder, "qlhoa.db")))
+                {
+                    connection.Insert(h);
+                    return true;
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                //   Log.Info("SQLiteEx", ex.Message);
+                return false;
+            }
         }
-      }
-      catch (SQLiteException ex)
-      {
-        //   Log.Info("SQLiteEx", ex.Message);
-        return false;
-      }
-    }
-    public List<Hoa> selecthoa()
-    {
-      try
-      {
-        using (var connection = new SQLiteConnection
-            (System.IO.Path.Combine(folder, "qlhoa.db")))
+        public List<Hoa> selecthoa()
         {
-          return connection.Table<Hoa>().ToList();
-        }
-      }
-      catch (SQLiteException ex)
-      {
+            try
+            {
+                using (var connection = new SQLiteConnection
+                    (System.IO.Path.Combine(folder, "qlhoa.db")))
+                {
+                    return connection.Table<Hoa>().ToList();
+                }
+            }
+            catch (SQLiteException ex)
+            {
 
-        return null;
-      }
+                return null;
+            }
+        }
     }
-  }
 }
 

@@ -12,9 +12,15 @@ namespace Tuan3
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DanhSach : ContentPage
     {
+        Database db;
+        List<LoaiHoa> dsl;
         public DanhSach()
         {
             InitializeComponent();
+            InitializeComponent();
+            db = new Database();
+            dsl = db.selectLoaihoa();
+            lstdsloai.ItemsSource = dsl;
         }
     }
 }

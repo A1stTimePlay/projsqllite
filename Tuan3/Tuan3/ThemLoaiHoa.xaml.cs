@@ -19,7 +19,14 @@ namespace Tuan3
 
         private void btnGhi_Clicked(object sender, EventArgs e)
         {
-
+            Database db = new Database();
+            LoaiHoa loaiHoa = new LoaiHoa { TenLoai = etTenLoai.Text };
+            if (db.InsertLoaihoa(loaiHoa) == true)
+            {
+                DisplayAlert("Thông Báo", "Thêm loại hoa thành công", "OK");
+            }
+            else
+                DisplayAlert("Thông Báo", "Thêm loại hoa Lỗi", "OK");
         }
     }
 }

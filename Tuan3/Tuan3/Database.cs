@@ -49,8 +49,7 @@ namespace Tuan3
         {
             try
             {
-                using (var connection = new SQLiteConnection
-                    (System.IO.Path.Combine(folder, "qlhoa.db")))
+                using (var connection = new SQLiteConnection(System.IO.Path.Combine(folder, "qlhoa.db")))
                 {
                     return connection.Table<LoaiHoa>().ToList();
                 }
@@ -66,8 +65,7 @@ namespace Tuan3
         {
             try
             {
-                using (var connection = new
-                    SQLiteConnection(System.IO.Path.Combine(folder, "qlhoa.db")))
+                using (var connection = new SQLiteConnection(System.IO.Path.Combine(folder, "qlhoa.db")))
                 {
                     connection.Insert(h);
                     return true;
